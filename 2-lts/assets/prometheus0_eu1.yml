@@ -1,0 +1,24 @@
+global:
+  scrape_interval: 5s
+  external_labels:
+    cluster: eu1
+    replica: 0
+    tenant: team-eu # Not needed, but a good practice if you want to grow this to multi-tenant system some day.
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['172.17.0.1:9090']
+  - job_name: 'sidecar'
+    static_configs:
+      - targets: ['172.17.0.1:19090']
+  - job_name: 'minio'
+    metrics_path: /minio/prometheus/metrics
+    static_configs:
+      - targets: ['172.17.0.1:9000']
+  - job_name: 'querier'
+    static_configs:
+      - targets: ['172.17.0.1:9091']
+  - job_name: 'store_gateway'
+    static_configs:
+      - targets: ['172.17.0.1:19091']

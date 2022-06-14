@@ -1,0 +1,12 @@
+{
+    "items": [
+      { "path": "1-globalview" },
+      { "path": "2-lts"},
+      { "path": "3-receiver" },
+      { "path": "4-receiver-agent" },
+      { "path": "5-query-caching" },
+      { "path": "6-multi-tenancy" },
+      { "path": "x-playground" },
+      { "path": "x-more-to-come" }
+    ]
+}
