@@ -105,7 +105,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus0_eu1_data:/prometheus \
     -u root \
     --name prometheus-0-eu1 \
-    quay.io/prometheus/prometheus:v2.14.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9090 \
@@ -124,7 +124,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus0_us1_data:/prometheus \
     -u root \
     --name prometheus-0-us1 \
-    quay.io/prometheus/prometheus:v2.14.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9091 \
@@ -141,7 +141,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus1_us1_data:/prometheus \
     -u root \
     --name prometheus-1-us1 \
-    quay.io/prometheus/prometheus:v2.14.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9092 \

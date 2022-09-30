@@ -83,7 +83,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus_data:/prometheus"${i}" \
     -u root \
     --name prometheus"${i}" \
-    quay.io/prometheus/prometheus:v2.22.2 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:909"${i}" \
@@ -109,7 +109,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus"${i}".yml:/etc/prometheus/prometheus.yml \
     --name prometheus-sidecar"${i}" \
     -u root \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     sidecar \
     --http-address=0.0.0.0:1909"${i}" \
     --grpc-address=0.0.0.0:1919"${i}" \
@@ -135,7 +135,7 @@ And now, let's deploy Thanos Querier to have a global overview on our services.
 ```
 docker run -d --net=host --rm \
     --name querier \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     query \
     --http-address 0.0.0.0:10912 \
     --grpc-address 0.0.0.0:10901 \

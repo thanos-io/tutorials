@@ -93,7 +93,7 @@ docker run -d --net=host --rm \
     -v /root/prom-eu1:/prometheus \
     -u root \
     --name prometheus-0-eu1 \
-    quay.io/prometheus/prometheus:v2.20.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.retention.time=1000d \
     --storage.tsdb.path=/prometheus \
@@ -119,7 +119,7 @@ Similar to previous course, let's setup global view querying with sidecar:
 docker run -d --net=host --rm \
     --name prometheus-0-eu1-sidecar \
     -u root \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     sidecar \
     --http-address 0.0.0.0:19090 \
     --grpc-address 0.0.0.0:19190 \
@@ -132,7 +132,7 @@ so we will make sure we point the Querier to the gRPC endpoints of the sidecar:
 ```
 docker run -d --net=host --rm \
     --name querier \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     query \
     --http-address 0.0.0.0:9091 \
     --query.replica-label replica \

@@ -80,7 +80,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus0_fruit_data:/prometheus \
     -u root \
     --name prometheus-0-fruit \
-    quay.io/prometheus/prometheus:v2.20.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9090 \
@@ -94,7 +94,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/editor/prometheus0_fruit.yml:/etc/prometheus/prometheus.yml \
     --name prometheus-0-sidecar-fruit \
     -u root \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     sidecar \
     --http-address 0.0.0.0:19090 \
     --grpc-address 0.0.0.0:19190 \
@@ -112,7 +112,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus0_veggie_data:/prometheus \
     -u root \
     --name prometheus-0-veggie \
-    quay.io/prometheus/prometheus:v2.20.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9091 \
@@ -126,7 +126,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/editor/prometheus0_veggie.yml:/etc/prometheus/prometheus.yml \
     --name prometheus-0-sidecar-veggie \
     -u root \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     sidecar \
     --http-address 0.0.0.0:19091 \
     --grpc-address 0.0.0.0:19191 \
@@ -142,7 +142,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus1_veggie_data:/prometheus \
     -u root \
     --name prometheus-1-veggie \
-    quay.io/prometheus/prometheus:v2.20.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9092 \
@@ -158,7 +158,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/editor/prometheus1_veggie.yml:/etc/prometheus/prometheus.yml \
     --name prometheus-01-sidecar-veggie \
     -u root \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     sidecar \
     --http-address 0.0.0.0:19092 \
     --grpc-address 0.0.0.0:19192 \
@@ -176,7 +176,7 @@ Fruit:
 ```
 docker run -d --net=host --rm \
     --name querier-fruit \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     query \
     --http-address 0.0.0.0:29091 \
     --grpc-address 0.0.0.0:29191 \
@@ -189,7 +189,7 @@ Veggie:
 ```
 docker run -d --net=host --rm \
     --name querier-veggie \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     query \
     --http-address 0.0.0.0:29092 \
     --grpc-address 0.0.0.0:29192 \

@@ -42,7 +42,7 @@ docker run -d --net=host --rm \
     -v /root/prometheus-batcave-data:/prometheus \
     -u root \
     --name prometheus-batcave \
-    quay.io/prometheus/prometheus:v2.27.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yaml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9090 \
@@ -86,7 +86,7 @@ docker run -d --net=host --rm \
     -v /root/prometheus-batcomputer:/prometheus \
     -u root \
     --name prometheus-batcomputer \
-    quay.io/prometheus/prometheus:v2.27.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yaml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9091 \

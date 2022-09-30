@@ -103,7 +103,7 @@ PROM_US1_0_EXT_ADDRESS={{TRAFFIC_HOST1_${PROM_US1_0_PORT}}}
 ### Deploying Prometheus-es/Prometheus/Prometheus instances
 
 ```
-docker run -it --rm quay.io/prometheus/prometheus:v2.20.0 --help
+docker run -it --rm quay.io/prometheus/prometheus:v2.38.0 --help
 ```{{execute}}
 
 * `cluster="eu1", replica="0"` Prometheus:
@@ -114,7 +114,7 @@ docker run -d --net=host --rm \
     -v ${CURR_DIR}/prom-eu1-replica0:/prometheus \
     -u root \
     --name prom-eu1-0 \
-    quay.io/prometheus/prometheus:v2.20.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --storage.tsdb.retention.time=1000d \
@@ -134,7 +134,7 @@ docker run -d --net=host --rm \
     -v ${CURR_DIR}/prom-eu1-replica1:/prometheus \
     -u root \
     --name prom-eu1-1 \
-    quay.io/prometheus/prometheus:v2.20.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --storage.tsdb.retention.time=1000d \
@@ -154,7 +154,7 @@ docker run -d --net=host --rm \
     -v ${CURR_DIR}/prom-us1-replica0:/prometheus \
     -u root \
     --name prom-us1-0 \
-    quay.io/prometheus/prometheus:v2.20.0 \
+    quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --storage.tsdb.retention.time=1000d \
@@ -169,7 +169,7 @@ docker run -d --net=host --rm \
 ### Step1: Sidecar
 
 ```
-docker run -it --rm quay.io/thanos/thanos:v0.26.0 --help
+docker run -it --rm quay.io/thanos/thanos:v0.28.0 --help
 ```{{execute}}
 
 
@@ -180,7 +180,7 @@ docker run -d --net=host --rm \
     -v ${CURR_DIR}/prom-eu1-replica0-config.yaml:/etc/prometheus/prometheus.yml \
     --name prom-eu1-0-sidecar \
     -u root \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     sidecar \
     --http-address 0.0.0.0:19091 \
     --grpc-address 0.0.0.0:19191 \
@@ -195,7 +195,7 @@ docker run -d --net=host --rm \
     -v ${CURR_DIR}/prom-eu1-replica1-config.yaml:/etc/prometheus/prometheus.yml \
     --name prom-eu1-1-sidecar \
     -u root \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     sidecar \
     --http-address 0.0.0.0:19092 \
     --grpc-address 0.0.0.0:19192 \
@@ -210,7 +210,7 @@ docker run -d --net=host --rm \
     -v ${CURR_DIR}/prom-us1-replica0-config.yaml:/etc/prometheus/prometheus.yml \
     --name prom-us1-0-sidecar \
     -u root \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     sidecar \
     --http-address 0.0.0.0:19093 \
     --grpc-address 0.0.0.0:19193 \
@@ -223,7 +223,7 @@ docker run -d --net=host --rm \
 ```
 docker run -d --net=host --rm \
     --name querier \
-    quay.io/thanos/thanos:v0.26.0 \
+    quay.io/thanos/thanos:v0.28.0 \
     query \
     --http-address 0.0.0.0:9090 \
     --grpc-address 0.0.0.0:19190 \
