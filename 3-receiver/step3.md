@@ -38,7 +38,7 @@ scrape_configs:
       - targets: ['172.17.0.1:9091']
 remote_write:
 - url: 'http://172.17.0.1:10908/api/v1/receive'
-'''{{copy}}
+```{{copy}}
 
 ## Reload Configuration
 
