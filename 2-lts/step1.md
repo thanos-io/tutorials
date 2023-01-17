@@ -89,8 +89,8 @@ than 2 weeks. And we have a year (:
 
 ```
 docker run -d --net=host --rm \
-    -v /root/editor/prometheus0_eu1.yml:/etc/prometheus/prometheus.yml \
-    -v /root/prom-eu1:/prometheus \
+    -v $(pwd)/prometheus0_eu1.yml:/etc/prometheus/prometheus.yml \
+    -v $(pwd)/prom-eu1:/prometheus \
     -u root \
     --name prometheus-0-eu1 \
     quay.io/prometheus/prometheus:v2.38.0 \
