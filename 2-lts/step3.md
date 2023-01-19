@@ -59,7 +59,7 @@ docker run -d --net=host --rm \
 
 Click on the Querier UI `Graph` page and try querying data for a year or two by inserting metrics `continuous_app_metric0` ([Query UI]({{TRAFFIC_HOST1_9091}}/graph?g0.range_input=1y&g0.max_source_resolution=0s&g0.expr=continuous_app_metric0&g0.tab=0)). Make sure `deduplication` is selected and you will be able to discover all the data fetched by Thanos store.
 
-![](https://github.com/thanos-io/thanos/raw/main/tutorials/katacoda/thanos/2-lts/query.png)
+![](https://github.com/thanos-io/tutorials/blob/main/2-lts/query.png)
 
 Also, you can check all the active endpoints located by thanos-store by clicking on [Stores]({{TRAFFIC_HOST1_9091}}/stores).
 

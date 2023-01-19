@@ -75,8 +75,8 @@ Let's run sidecar:
 
 ```
 docker run -d --net=host --rm \
-    -v /root/editor/bucket_storage.yaml:/etc/thanos/minio-bucket.yaml \
-    -v /root/prom-eu1:/prometheus \
+    -v $(pwd)/bucket_storage.yaml:/etc/thanos/minio-bucket.yaml \
+    -v $(pwd)/prom-eu1:/prometheus \
     --name prometheus-0-eu1-sidecar \
     -u root \
     quay.io/thanos/thanos:v0.28.0 \
