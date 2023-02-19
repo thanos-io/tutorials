@@ -42,7 +42,7 @@ It will also scrape our components we will use in this tutorial.
 
 Click on the box and it will get copied for config to propagate the configs to file.
 
-Switch on to the Editor tab and make a `prometheus0_eu1.yml` file in editor folder and paste the above code in it.
+Switch on to the Editor tab and make a `prometheus0_eu1.yml` file and paste the below code in it.
 
 ```
 global:

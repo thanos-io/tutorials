@@ -50,7 +50,7 @@ docker run -d --net=host --rm \
     --web.enable-lifecycle
 ```{{execute}}
 
-Verify that `prometheus-batcave` is running by navigating to the [Batcave Prometheus UI]({{TRAFFIC_HOST1_9090}}).
+Verify that `prometheus-batcave` is running by navigating to the [Batcave Prometheus UI]({{TRAFFIC_HOST1_9090}}/).
 
 <details>
  <summary>Why do we enable the web lifecycle flag?</summary>
@@ -94,6 +94,6 @@ docker run -d --net=host --rm \
     --web.enable-lifecycle
 ```{{execute}}
 
-Verify that `prometheus-batcomputer` is running by navigating to the [Batcomputer Prometheus UI]({{TRAFFIC_HOST1_9091}}).
+Verify that `prometheus-batcomputer` is running by navigating to the [Batcomputer Prometheus UI]({{TRAFFIC_HOST1_9091}}/).
 
 With these Prometheus instances configured and running, we can now start to architect our global view of all of `Wayne Enterprises`.

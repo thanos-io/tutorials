@@ -44,7 +44,7 @@ Enter the credentials as mentioned below:
 
 All Thanos components that use object storage uses the same `objstore.config` flag with the same "little" bucket config format.
 
-Switch on to the Editor tab and make a `bucket_storage.yaml` file in editor folder and paste the above code in it.
+Switch on to the Editor tab and make a `bucket_storage.yaml` file and paste the below code in it.
 
 ```
 type: S3
