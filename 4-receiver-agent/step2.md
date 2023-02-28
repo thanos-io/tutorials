@@ -62,7 +62,7 @@ quay.io/prometheus/prometheus:v2.38.0 \
 
 This runs Prometheus Agent, which will scrape itself and forward all to Thanos Receive. It also exposes UI with pages that relate to scraping, service discovery, configuration and build information.
 
-Verify that `prom-agent-batmobile` is running by navigating to the [Batmobile Prometheus Agent UI]({{TRAFFIC_HOST1_9090}}/targets).
+Verify that `prom-agent-batmobile` is running by navigating to the [Batmobile Prometheus Agent UI]({{TRAFFIC_HOST1_9090}}/targets/).
 
 You should see one target: Prometheus Agent on `batmobile` itself.
 
@@ -101,7 +101,7 @@ quay.io/prometheus/prometheus:v2.38.0 \
 --web.listen-address=:9091
 ```{{execute}}
 
-Verify that `prom-agent-batcopter` is running by navigating to the [Batcopter Prometheus Agent UI]({{TRAFFIC_HOST1_9091}}/targets).
+Verify that `prom-agent-batcopter` is running by navigating to the [Batcopter Prometheus Agent UI]({{TRAFFIC_HOST1_9091}}/targets/).
 
 You should see one target: Prometheus Agent on `batcopter` itself.
 
