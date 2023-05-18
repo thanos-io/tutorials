@@ -30,7 +30,7 @@ You can read more about [Store](https://thanos.io/tip/components/store.md/) here
 
 ```
 docker run -d --net=host --rm \
-    -v /root/editor/bucket_storage.yaml:/etc/thanos/minio-bucket.yaml \
+    -v $(pwd)/bucket_storage.yaml:/etc/thanos/minio-bucket.yaml \
     --name store-gateway \
     quay.io/thanos/thanos:v0.28.0 \
     store \
@@ -78,7 +78,7 @@ The potential duplication of data between Prometheus+sidecar results and store G
 
 Another interesting question here is how to ensure if we query the data from bucket only?
 
-We can check this by visitng the [New UI]({{TRAFFIC_HOST1_9091}}/new/graph?g0.expr=&g0.tab=0&g0.stacked=0&g0.range_input=1h&g0.max_source_resolution=0s&g0.deduplicate=1&g0.partial_response=0&g0.store_matches=[]), inserting `continuous_app_metric0` metrics again with 1 year time range of graph,
+We can check this by visiting the [New UI]({{TRAFFIC_HOST1_9091}}/graph?g0.expr=&g0.tab=0&g0.stacked=0&g0.range_input=1h&g0.max_source_resolution=0s&g0.deduplicate=1&g0.partial_response=0&g0.store_matches=[]), inserting `continuous_app_metric0` metrics again with 1 year time range of graph,
 and click on `Enable Store Filtering`.
 
 This allows us to filter stores and helps in debugging from where we are querying the data exactly.
