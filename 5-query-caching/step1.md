@@ -80,12 +80,12 @@ scrape_configs:
 for i in $(seq 0 2); do
 docker run -d --net=host --rm \
     -v $(pwd)/prometheus"${i}".yml:/etc/prometheus/prometheus.yml \
-    -v $(pwd)/prometheus_data:/prometheus"${i}" \
+    -v $(pwd)/prometheus_data/prometheus"${i}":/prometheus"${i}" \
     -u root \
     --name prometheus"${i}" \
     quay.io/prometheus/prometheus:v2.38.0 \
     --config.file=/etc/prometheus/prometheus.yml \
-    --storage.tsdb.path=/prometheus \
+    --storage.tsdb.path=/prometheus"${i}" \
     --web.listen-address=:909"${i}" \
     --web.external-url={{TRAFFIC_HOST1_909"${i}"}} \
     --web.enable-lifecycle \

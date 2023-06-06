@@ -37,7 +37,7 @@ The flag `wait` is used to make sure all compactions have been processed while `
 
 ## Setup Verification
 
-To check if compactor works fine, we can look at the [Bucket View]({{TRAFFIC_HOST1_19095}}/new/loaded).
+To check if compactor works fine, we can look at the [Bucket View]({{TRAFFIC_HOST1_19095}}/loaded).
 
 Now, if we click on the blocks, they will provide us all the metadata (Series, Samples, Resolution, Chunks, and many more things).
 
@@ -50,7 +50,7 @@ and no special configuration is required to perform this process.
 
 The Compactor applies compaction to the bucket data and also completes the downsampling for historical data.
 
-To expierience this, click on the [Querier]({{TRAFFIC_HOST1_9091}}/new/graph?g0.expr=&g0.tab=0&g0.stacked=0&g0.range_input=1h&g0.max_source_resolution=0s&g0.deduplicate=1&g0.partial_response=0&g0.store_matches=[]) and insert metrics `continuous_app_metric0` with 1 year time range of graph, and also, click on `Enable Store Filtering`.
+To expierience this, click on the [Querier]({{TRAFFIC_HOST1_9091}}/graph?g0.expr=&g0.tab=0&g0.stacked=0&g0.range_input=1h&g0.max_source_resolution=0s&g0.deduplicate=1&g0.partial_response=0&g0.store_matches=[]) and insert metrics `continuous_app_metric0` with 1 year time range of graph, and also, click on `Enable Store Filtering`.
 
 Let's try querying `Max 5m downsampling` data, it uses 5m resolution and it will be faster than the raw data. Also, Downsampling is built on top of data, and never done on **young** data.
 
