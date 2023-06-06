@@ -170,7 +170,7 @@ docker run -d --net=host --rm \
     --http-address 0.0.0.0:19095
 ```{{execute}}
 
-Visit {{TRAFFIC_HOST1_19095}}/new/loaded to see Compactor Web UI.
+Visit {{TRAFFIC_HOST1_19095}}/loaded to see Compactor Web UI.
 
 ### Data should be immediately downsampled as well for smooth experience!
 
