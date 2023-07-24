@@ -95,7 +95,7 @@ you should see our external labels in `external_labels` YAML option:
     replica: 1
 ```
 
-Now if we compare to `prometheus0_us1.yaml`:
+Now if we compare to `prometheus0_us1.yml`:
 
 ```yaml
   external_labels:
