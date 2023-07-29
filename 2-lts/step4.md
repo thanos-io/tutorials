@@ -23,7 +23,7 @@ Click below snippet to start the Compactor.
 
 ```
 docker run -d --net=host --rm \
- -v /root/editor/bucket_storage.yaml:/etc/thanos/minio-bucket.yaml \
+ -v $(pwd)/bucket_storage.yaml:/etc/thanos/minio-bucket.yaml \
     --name thanos-compact \
     quay.io/thanos/thanos:v0.28.0 \
     compact \

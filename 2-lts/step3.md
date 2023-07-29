@@ -30,7 +30,7 @@ You can read more about [Store](https://thanos.io/tip/components/store.md/) here
 
 ```
 docker run -d --net=host --rm \
-    -v /root/editor/bucket_storage.yaml:/etc/thanos/minio-bucket.yaml \
+    -v $(pwd)/bucket_storage.yaml:/etc/thanos/minio-bucket.yaml \
     --name store-gateway \
     quay.io/thanos/thanos:v0.28.0 \
     store \
