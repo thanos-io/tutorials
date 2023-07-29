@@ -38,7 +38,7 @@ Run the prometheus instance:
 
 ```
 docker run -d --net=host --rm \
-    -v /root/editor/prometheus-batcave.yaml:/etc/prometheus/prometheus.yaml \
+    -v $(pwd)/prometheus-batcave.yaml:/etc/prometheus/prometheus.yaml \
     -v /root/prometheus-batcave-data:/prometheus \
     -u root \
     --name prometheus-batcave \
@@ -82,7 +82,7 @@ scrape_configs:
 
 ```
 docker run -d --net=host --rm \
-    -v /root/editor/prometheus-batcomputer.yaml:/etc/prometheus/prometheus.yaml \
+    -v $(pwd)/prometheus-batcomputer.yaml:/etc/prometheus/prometheus.yaml \
     -v /root/prometheus-batcomputer:/prometheus \
     -u root \
     --name prometheus-batcomputer \
