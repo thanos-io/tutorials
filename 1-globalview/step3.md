@@ -28,18 +28,18 @@ Click the snippet below to start the Querier.
 ```
 docker run -d --net=host --rm \
     --name querier \
-    quay.io/thanos/thanos:v0.28.0 \
+    quay.io/thanos/thanos:v0.42.5 \
     query \
     --http-address 0.0.0.0:29090 \
     --query.replica-label replica \
-    --store 172.17.0.1:19190 \
-    --store 172.17.0.1:19191 \
-    --store 172.17.0.1:19192 && echo "Started Thanos Querier"
+    --endpoint 172.17.0.1:19190 \
+    --endpoint 172.17.0.1:19191 \
+    --endpoint 172.17.0.1:19192 && echo "Started Thanos Querier"
 ```{{execute}}
 
 ## Setup verification
 
-Thanos Querier exposes very similar UI to the Prometheus, but on top of many `StoreAPIs you wish to connect to.
+Thanos Querier exposes very similar UI to the Prometheus, but on top of many StoreAPIs you wish to connect to.
 
 To check if the Querier works as intended let's look on [Querier UI `Store` page]({{TRAFFIC_HOST1_29090}}/stores).
 

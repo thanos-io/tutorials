@@ -13,7 +13,7 @@ For this course, let's imagine the following situation:
 
 ![initial-case](https://docs.google.com/drawings/d/e/2PACX-1vQ5n5dAJSJPRXWA9INOViJJy9Ci6TUwlCrDv7_TtV9vE41rFOpg26V3jQv9gf1NQjVWSFyauG5XgzOW/pub?w=1061&h=604)
 
-1. We have one Prometheus server in some `eu1` cluster.
+1. We have 1 Prometheus server in some `eu1` cluster.
 2. We have 2 replica Prometheus servers in some `us1` cluster that scrapes the same targets.
 
 Let's start this initial Prometheus setup for now.
@@ -28,7 +28,7 @@ Switch on to the Editor tab and make a `prometheus0_eu1.yml` file and paste the 
 
 First, for the EU Prometheus server that scrapes itself:
 
-```
+```yaml
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
@@ -47,7 +47,7 @@ For the second cluster we set two replicas:
 
 Make a `prometheus0_us1.yml` file and paste the above code in it.
 
-```
+```yaml
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
@@ -64,7 +64,7 @@ scrape_configs:
 
 Make a `prometheus1_us1.yml` file and paste the above code in it.
 
-```
+```yaml
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
@@ -105,7 +105,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus0_eu1_data:/prometheus \
     -u root \
     --name prometheus-0-eu1 \
-    quay.io/prometheus/prometheus:v2.38.0 \
+    quay.io/prometheus/prometheus:v3.13.5 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9090 \
@@ -124,7 +124,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus0_us1_data:/prometheus \
     -u root \
     --name prometheus-0-us1 \
-    quay.io/prometheus/prometheus:v2.38.0 \
+    quay.io/prometheus/prometheus:v3.13.5 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9091 \
@@ -141,7 +141,7 @@ docker run -d --net=host --rm \
     -v $(pwd)/prometheus1_us1_data:/prometheus \
     -u root \
     --name prometheus-1-us1 \
-    quay.io/prometheus/prometheus:v2.38.0 \
+    quay.io/prometheus/prometheus:v3.13.5 \
     --config.file=/etc/prometheus/prometheus.yml \
     --storage.tsdb.path=/prometheus \
     --web.listen-address=:9092 \
@@ -173,14 +173,22 @@ our multi-cluster setup: **How many series (metrics) we collect overall on all P
 
 Tip: Look for `prometheus_tsdb_head_series` metric.
 
-🕵️‍♂️
 
-Try to get this information from the current setup!
+<details>
+<summary>Answer</summary>
+Here, <code>prometheus_tsdb_head_series</code> is the current number of series in a Prometheus server's TSDB head. Each Prometheus server scrapes this metric from its configured targets, so the query results show one value per target.
 
-To see the answer to this question click SHOW SOLUTION below.
+Add the EU1 result to the US1 result to get the total across all three Prometheus TSDBs. Use only one US dashboard: both US servers scrape the same two targets, so either dashboard can provide the pair of US readings. Since scrapes happen at different times, the live values may differ slightly. Do not add the results from both US dashboards, or you will count the US replicas twice.
+
+Because the US Prometheus servers are replicas scraping the same targets, this physical total counts the US data twice, once per replica. For a logical count with the US HA pair treated as one source, count only one US replica instead. Thanos Querier can provide that deduplicated view in the next step.
+
+As you can see this is not very convenient for both human as well as automation on top of metrics (e.g Alerting).
+
+The feature we are missing here is called **Global View** and it might be necessary once you scale out Prometheus to multiple instances.
+</details>
 
 ## Next
 
-Great! We have now running 3 Prometheus instances.
+Great! We now have 3 Prometheus instances.
 
 In the next steps, we will learn how we can install Thanos on top of our initial Prometheus setup to solve problems shown in the challenge.
