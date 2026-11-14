@@ -12,7 +12,7 @@ containers which will allow us to use pre-built docker images available [here](h
 
 This tutorial will take us from transforming vanilla Prometheus to basic Thanos deployment enabling:
 
-* Reliable querying multiple Prometheus instances from single [Prometheus API endpoint](https://prometheus.io/docs/prometheus/latest/querying/api/#expression-queries).
+* Reliable querying of multiple Prometheus instances from a single [Prometheus API endpoint](https://prometheus.io/docs/prometheus/latest/querying/api/#expression-queries).
 * Seamless handling of Highly Available Prometheus (multiple replicas)
 
 Let's jump in! 🤓
